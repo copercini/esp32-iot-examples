@@ -62,7 +62,7 @@ char* rootCABuff = \
 "hnacRHr2lVz2XTIIM6RUthg/aFzyQkqFOFSDX9HoLPKsEdao7WNq\n" \
 "-----END CERTIFICATE-----\n";
 
-// Fill your certificate.pem.crt with LINE ENDING
+// Fill with your certificate.pem.crt with LINE ENDING
 char* certificateBuff = \
 "-----BEGIN CERTIFICATE-----\n" \
 "144gW4ppxkKgxw4Wxg4Vx4a4nOX/Wz2zxt3ZSa/NWPg4W4qw1x0GpSnGS4W3gnzW\n" \
@@ -86,7 +86,7 @@ char* certificateBuff = \
 "-----END CERTIFICATE-----\n";
 
 
-// Fill your private.pem.key with LINE ENDING
+// Fill with your private.pem.key with LINE ENDING
 char* privateKeyBuff = \
 "-----BEGIN RSA PRIVATE KEY-----\n" \
 "144zow4WxxKpxnzxgWG44OnPzZWggp08vZwt6wqxZS4tg2xgx24tp4agaWW4Thvw\n" \
