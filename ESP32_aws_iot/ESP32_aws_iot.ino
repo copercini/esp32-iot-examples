@@ -32,7 +32,7 @@ int value = 0;
 /* root CA can be downloaded in:
 	https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem
 */
-char* rootCABuff = \
+const char* rootCABuff = \
 "-----BEGIN CERTIFICATE-----\n" \
 "MIIE0zCCA7ugAwIBAgIQGNrRniZ96LtKIVjNzGs7SjANBgkqhkiG9w0BAQUFADCB\n" \
 "yjELMAkGA1UEBhMCVVMxFzAVBgNVBAoTDlZlcmlTaWduLCBJbmMuMR8wHQYDVQQL\n" \
@@ -63,7 +63,7 @@ char* rootCABuff = \
 "-----END CERTIFICATE-----\n";
 
 // Fill with your certificate.pem.crt with LINE ENDING
-char* certificateBuff = \
+const char* certificateBuff = \
 "-----BEGIN CERTIFICATE-----\n" \
 "144gW4ppxkKgxw4Wxg4Vx4a4nOX/Wz2zxt3ZSa/NWPg4W4qw1x0GpSnGS4W3gnzW\n" \
 "pwgx1z0xSzW4WgNVWxs1nkWtqXpvW4WXZW4gg2Vqg124ZX1gTz1WWWW6W24gq29t\n" \
@@ -87,7 +87,7 @@ char* certificateBuff = \
 
 
 // Fill with your private.pem.key with LINE ENDING
-char* privateKeyBuff = \
+const char* privateKeyBuff = \
 "-----BEGIN RSA PRIVATE KEY-----\n" \
 "144zow4WxxKpxnzxgWG44OnPzZWggp08vZwt6wqxZS4tg2xgx24tp4agaWW4Thvw\n" \
 "W9zWTP94xS44Wgx1gggG4WxxnhqWWtgg4h4Wgk7Tn74hg/9Wxp12pTW8qGgWgpx4\n" \
@@ -121,9 +121,9 @@ void setup() {
 	Serial.begin(115200);
 	WiFi.begin(ssid, pass);
 
-	net.setCACert((unsigned char*)rootCABuff);
-	net.setCertificate((unsigned char*)certificateBuff);
-	net.setPrivateKey((unsigned char*)privateKeyBuff);
+	net.setCACert(rootCABuff);
+	net.setCertificate(certificateBuff);
+	net.setPrivateKey(privateKeyBuff);
 
 	client.begin(awsEndPoint, 8883, net);
 
