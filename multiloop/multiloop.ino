@@ -13,21 +13,21 @@
 void loop1(void *pvParameters) {
   while (1) {
      Serial.println("loop1");
-   delay(1000);
+     delay(1000);
   }
 }
 
 void loop2(void *pvParameters) {
   while (1) {
      Serial.println("loop2");
-   delay(300);
+     delay(300);
   }
 }
 
 void loop3(void *pvParameters) {
   while (1) {
      Serial.println("loop3");
-   delay(4000);
+     delay(4000);
   }
 }
 
