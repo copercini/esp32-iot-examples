@@ -27,6 +27,7 @@
 WiFiServer server(80);
 Preferences preferences;
 static volatile bool wifi_connected = false;
+String wifiSSID, wifiPassword;
 
 
 void WiFiEvent(WiFiEvent_t event)
@@ -81,8 +82,8 @@ void setup()
   Serial.println(WiFi.softAPIP());
 
   preferences.begin("wifi", false);
-  String wifiSSID =  preferences.getString("ssid", "none");         //NVS key ssid
-  String wifiPassword =  preferences.getString("password", "none");   //NVS key password
+  wifiSSID =  preferences.getString("ssid", "none");           //NVS key ssid
+  wifiPassword =  preferences.getString("password", "none");   //NVS key password
   preferences.end();
   Serial.print("Stored SSID: ");
   Serial.println(wifiSSID);
