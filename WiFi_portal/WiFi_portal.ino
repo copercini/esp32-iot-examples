@@ -69,6 +69,38 @@ void WiFiEvent(WiFiEvent_t event)
   }
 }
 
+String urlDecode(const String& text)
+{
+	String decoded = "";
+	char temp[] = "0x00";
+	unsigned int len = text.length();
+	unsigned int i = 0;
+	while (i < len)
+	{
+		char decodedChar;
+		char encodedChar = text.charAt(i++);
+		if ((encodedChar == '%') && (i + 1 < len))
+		{
+			temp[2] = text.charAt(i++);
+			temp[3] = text.charAt(i++);
+
+			decodedChar = strtol(temp, NULL, 16);
+		}
+		else {
+			if (encodedChar == '+')
+			{
+				decodedChar = ' ';
+			}
+			else {
+				decodedChar = encodedChar;  // normal ascii char
+			}
+		}
+		decoded += decodedChar;
+	}
+	return decoded;
+}
+
+
 void setup()
 {
   Serial.begin(115200);
@@ -177,11 +209,11 @@ void wifiDisconnectedLoop()
           preferences.clear();
 
           String qsid;
-          qsid = currentLine.substring(12, currentLine.indexOf('&')); //parse ssid
+          qsid = urlDecode(currentLine.substring(12, currentLine.indexOf('&'))); //parse ssid
           Serial.println(qsid);
           Serial.println("");
           String qpass;
-          qpass = currentLine.substring(currentLine.lastIndexOf('=') + 1, currentLine.lastIndexOf(' ')); //parse password
+          qpass = urlDecode(currentLine.substring(currentLine.lastIndexOf('=') + 1, currentLine.lastIndexOf(' '))); //parse password
           Serial.println(qpass);
           Serial.println("");
 
